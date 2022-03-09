@@ -119,8 +119,57 @@ end
 
 p merge_sort([1, 3, 2, 9, 10, 1, 2, 3, 5, 7])
 
-=end
 
 def subsets(array)
-    
+    return [[]] if array.length == 0
+    new_arr = subsets(array[0..-2]) # [1 , 2 , 3]
+    sets = []
+    (0...new_arr.length).each do |idx|  
+        sets << new_arr[idx]
+        sets << new_arr[idx] + [array[-1]]
+    end
+    return sets
 end
+
+p subsets([]) # => [[]]
+p subsets([1]) # => [[], [1]]
+p subsets([1, 2]) # => [[], [1], [2], [1, 2]]
+p subsets([1, 2, 3])
+# => [[], [1], [2], [1, 2], [3], [1, 3], [2, 3], [1, 2, 3]]
+
+=end
+
+def permutations(arr)
+    return [[]] if arr.length == 0
+    memo = permutations(arr[0..-2])
+    new_arr = []
+    memo.each do |sub|
+        var = sub.length
+        while var > -1
+            left = sub[0...var] || []
+            right = sub[var..-1] || []
+            new_arr << left + [arr[-1]] + right
+            var -= 1
+        end
+    end
+    new_arr
+end
+
+p permutations([1, 2, 3]) # => [[1, 2, 3], [1, 3, 2],
+#     [2, 1, 3], [2, 3, 1],
+#     [3, 1, 2], [3, 2, 1]]
+
+
+=begin
+    [[]]
+
+    [[1]]
+    [[1, 2], [2, 1]]
+
+    [[3, 1, 2], [1, 3, 2], [1, 2, 3],
+    [3, 2, 1], [2, 3, 1], [2, 1, 3]]
+
+
+
+=end    
+
