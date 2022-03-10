@@ -1,4 +1,4 @@
-=begin
+
 def iter_range(start, en)
     array = []
     start.step(en) { |num| array << num }
@@ -137,7 +137,6 @@ p subsets([1, 2]) # => [[], [1], [2], [1, 2]]
 p subsets([1, 2, 3])
 # => [[], [1], [2], [1, 2], [3], [1, 3], [2, 3], [1, 2, 3]]
 
-=end
 
 def permutations(arr)
     return [[]] if arr.length == 0
@@ -160,7 +159,6 @@ p permutations([1, 2, 3]) # => [[1, 2, 3], [1, 3, 2],
 #     [3, 1, 2], [3, 2, 1]]
 
 
-=begin
     [[]]
 
     [[1]]
@@ -171,5 +169,5 @@ p permutations([1, 2, 3]) # => [[1, 2, 3], [1, 3, 2],
 
 
 
-=end    
+    
 
